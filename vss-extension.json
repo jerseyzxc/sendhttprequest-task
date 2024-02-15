@@ -1,0 +1,65 @@
+{
+    "manifestVersion": 1,
+    "id": "IgorUdovchenko-SendHTTPRequest",
+    "name": "Send HTTP Request",
+    "version": "1.2.0",
+    "publisher": "IgorUdovchenko",
+    "public": false,
+    "targets": [
+      {
+        "id": "Microsoft.VisualStudio.Services"
+      }
+    ],
+    "description": "This task allows you to perform an HTTP request to an API within a pipeline.",
+    "categories": [
+      "Azure Pipelines"
+    ],
+    "tags": [
+      "api",
+      "request",
+      "http",
+      "send"
+    ],
+    "content": {
+      "details": {
+        "path": "README.md"
+      },
+      "license": {
+        "path": "LICENSE"
+      }
+    },
+    "links": {
+      "getstarted": {
+        "uri": "https://github.com/jerseyzxc/sendhttprequest-task"
+      },
+      "support": {
+        "uri": "https://github.com/jerseyzxc/sendhttprequest-task"
+      }
+    },
+    "branding": {
+      "color": "rgb(36, 43, 50)",
+      "theme": "dark"
+    },
+    "icons": {
+      "default": "logo.png"
+    },
+    "files": [
+      {
+        "path": "SendHTTPRequest"
+      }
+    ],
+  
+    "contributions": [
+      {
+        "id": "SendHTTPRequest",
+        "type": "ms.vss-distributed-task.task",
+        "targets": [
+          "ms.vss-distributed-task.tasks"
+        ],
+        "properties": {
+          "name": "SendHTTPRequest"
+        }
+      }
+    ]
+  }
+  

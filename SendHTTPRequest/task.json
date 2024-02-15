@@ -1,0 +1,144 @@
+{
+    "$schema": "https://raw.githubusercontent.com/Microsoft/azure-pipelines-task-lib/master/tasks.schema.json",
+    "id": "e101524f-8067-4a91-8a31-de9bef008302",
+    "name": "SendHTTPRequest",
+    "friendlyName": "Send HTTP Request",
+    "description": "This task allows you to perform an HTTP request to an API within a pipeline.",
+    "helpMarkDown": "[Learn more about this task](https://github.com/jerseyzxc/sendhttprequest-task)",
+    "category": "Azure Pipelines",
+    "author": "Igor Udovchenko",
+    "version": {
+        "Major": 1,
+        "Minor": 2,
+        "Patch": 0
+    },
+    "demands": [
+        "azureps"
+    ],
+    "minimumAgentVersion": "1.95.0",
+    "runsOn": [
+        "Agent"
+    ],
+    "groups": [
+        {
+            "name": "proxyOptions",
+            "displayName": "Proxy Options",
+            "isExpanded": false
+        }
+    ],
+    "instanceNameFormat": "Send HTTP Request",
+    "inputs": [
+        {
+            "name": "httpMethod",
+            "type": "pickList",
+            "label": "HTTP Method",
+            "defaultValue": "post",
+            "required": true,
+            "options": {
+                "get": "GET",
+                "post": "POST",
+                "put": "PUT",
+                "patch": "PATCH",
+                "delete": "DELETE",
+                "head": "HEAD",
+                "options": "OPTIONS",
+                "trace": "TRACE",
+                "connect": "CONNECT"
+            }
+        },
+        {
+            "name": "httpHeaders",
+            "type": "multiLine",
+            "label": "Headers",
+            "helpMarkDown": "Define HTTP Headers in JSON format. Limit: 5000 chars.",
+            "required": true,
+            "defaultValue": "{\n \"Content-Type\":\"application/json\"  \n}",
+            "properties": {
+                "resizable": true,
+                "rows": "10",
+                "maxLength": "5000"
+            }
+        },
+        {
+            "name": "httpUri",
+            "type": "string",
+            "label": "URI and Parameters of the Request",
+            "helpMarkDown": "Specify the URI for the request with any additinal query parameters if needed.",
+            "required": true,
+            "defaultValue": "https://"
+        },
+        {
+            "name": "bodyPayload",
+            "type": "multiLine",
+            "label": "Body Payload of the HTTP Request",
+            "defaultValue": "{\n \n}",
+            "required": true,
+            "helpMarkDown": "Specifies the payload for the body of the request. Limit: 10000 chars.",
+            "visibleRule": "httpMethod = post || httpMethod = put || httpMethod = patch",
+            "properties": {
+                "resizable": true,
+                "rows": "10",
+                "maxLength": "10000"
+            }
+        },
+        {
+            "name": "useProxy",
+            "type": "boolean",
+            "label": "Use Proxy",
+            "required": true,
+            "groupName": "proxyOptions"
+        },
+        {
+            "name": "proxyAddress",
+            "type": "string",
+            "label": "Proxy URL/IP with Port",
+            "helpMarkDown": "Specify the URL or IP for proxy to be used including Port number.",
+            "required": true,
+            "defaultValue": "https://proxy.contoso.com:8080",
+            "groupName": "proxyOptions",
+            "visibleRule": "useProxy = true"
+        },
+        {
+            "name": "useProxyCredentials",
+            "type": "boolean",
+            "label": "Use Proxy Credentials",
+            "required": true,
+            "defaultValue": "",
+            "groupName": "proxyOptions",
+            "visibleRule": "useProxy = true"
+        },
+        {
+            "name": "proxyUsername",
+            "type": "string",
+            "label": "Username",
+            "required": true,
+            "defaultValue": "",
+            "groupName": "proxyOptions",
+            "visibleRule": "useProxy = true && useProxyCredentials = true"
+        },
+        {
+            "name": "proxyPassword",
+            "type": "string",
+            "label": "Password",
+            "required": false,
+            "defaultValue": "",
+            "groupName": "proxyOptions",
+            "visibleRule": "useProxy = true && useProxyCredentials = true"
+        }
+    ],
+    "outputVariables": [
+        {
+            "name": "responseBody",
+            "description": "Response Body of the Request"
+        },
+        {
+            "name": "statusCode",
+            "description": "HTTP Status Code"
+        }
+    ],
+    "execution": {
+        "PowerShell3": {
+            "target": "SendHTTPRequest.ps1"
+        }
+    }
+    }
