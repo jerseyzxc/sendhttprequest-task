@@ -10,7 +10,7 @@
     "version": {
         "Major": 1,
         "Minor": 2,
-        "Patch": 0
+        "Patch": 1
     },
     "demands": [
         "azureps"
@@ -50,7 +50,7 @@
             "name": "httpHeaders",
             "type": "multiLine",
             "label": "Headers",
-            "helpMarkDown": "Define HTTP Headers in JSON format. Limit: 5000 chars.",
+            "helpMarkDown": "Define HTTP headers in JSON format. Limit: 5000 chars.",
             "required": true,
             "defaultValue": "{\n \"Content-Type\":\"application/json\"  \n}",
             "properties": {
@@ -63,14 +63,14 @@
             "name": "httpUri",
             "type": "string",
             "label": "URI and Parameters of the Request",
-            "helpMarkDown": "Specify the URI for the request with any additinal query parameters if needed.",
+            "helpMarkDown": "Specify the URI for the request with any additinal query parameters.",
             "required": true,
             "defaultValue": "https://"
         },
         {
             "name": "bodyPayload",
             "type": "multiLine",
-            "label": "Body Payload of the HTTP Request",
+            "label": "Body payload of the HTTP Request",
             "defaultValue": "{\n \n}",
             "required": true,
             "helpMarkDown": "Specifies the payload for the body of the request. Limit: 10000 chars.",
@@ -92,9 +92,9 @@
             "name": "proxyAddress",
             "type": "string",
             "label": "Proxy URL/IP with Port",
-            "helpMarkDown": "Specify the URL or IP for proxy to be used including Port number.",
+            "helpMarkDown": "Specify the URL or IP for proxy to be used including port number.",
             "required": true,
-            "defaultValue": "https://proxy.contoso.com:8080",
+            "defaultValue": "https://proxy.example.com:8123",
             "groupName": "proxyOptions",
             "visibleRule": "useProxy = true"
         },
@@ -129,7 +129,7 @@
     "outputVariables": [
         {
             "name": "responseBody",
-            "description": "Response Body of the Request"
+            "description": "Response body of the Request"
         },
         {
             "name": "statusCode",

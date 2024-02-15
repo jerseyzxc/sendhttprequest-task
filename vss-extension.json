@@ -2,9 +2,9 @@
     "manifestVersion": 1,
     "id": "IgorUdovchenko-SendHTTPRequest",
     "name": "Send HTTP Request",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "IgorUdovchenko",
-    "public": false,
+    "public": true,
     "targets": [
       {
         "id": "Microsoft.VisualStudio.Services"
