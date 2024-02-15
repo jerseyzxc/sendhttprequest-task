@@ -18,4 +18,4 @@ This task allows you to perform an HTTP request to an API within a pipeline.
 - Proxy credentials can also be provided (username and/or password)
 
 # Output
-Task Outputs two variables: 'responseBody' and 'statusCode' which can be used in subsequent tasks.
+- The task outputs two variables: 'responseBody' and 'statusCode' which can be used in subsequent tasks.
